@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Reservation | Beef Check</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <nav class="navbar">
+            <h1 class="logo">Contact & Reservation</h1>
+            <ul class="nav-links">
+                <li><a href="../Homepage/home.html">Home</a></li>
+                <li><a href="../Food/menu.html">Menu</a></li>
+                <li><a href="../Desert & Beverages/dessert.html">Dessert & Beverages</a></li>
+                <li><a href="../Contact&Reservation/contact.html">Contact & Reservation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="container">
+
+        <div class="info">
+            <h2>Contact Information</h2>
+            <p><strong>Address:</strong> 12 Rue de la Liberté, 21000 Dijon, France</p>
+            <p><strong>Phone:</strong> +33 7 68 55 61 49</p>
+            <p><strong>Email:</strong> contact@beefcheck.com</p>
+            <h3>Find Us</h3>
+
+             <!-- Google Map -->
+    <div class="map">
+        <iframe 
+        src="https://www.google.com/maps?q=12%20Rue%20de%20la%20Libert%C3%A9%2C%2021000%20Dijon%2C%20France&output=embed"
+        width="100%" 
+        height="220"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+        </iframe>
+    </div>
+
+        </div>
+
+        <div class="form-box">
+            <h2>Reserve a Table</h2>
+
+            <form>
+                <input type="text" placeholder="Your Last Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="date" required>
+                <input type="time" required>
+                <input type="number" placeholder="Guests" min="1" required>
+                <textarea placeholder="Special requests"></textarea>
+                <button type="submit">Reserve</button>
+            </form>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 Beef Check</p>
+    </footer>
+
+</body>
+
+</html>
