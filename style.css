@@ -33,7 +33,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('Restaurant.png');
+    background-image: url('../Food/Restaurant.png');
     background-size: cover;
     background-position: center;
     opacity: 0.6;
@@ -46,7 +46,7 @@ body::before {
     color: var(--accent-color);
 }
 
-/* NAVBAR (MATCHES HOMEPAGE BORDER STYLE) */
+/* NAVBAR (MATCHES HOMEPAGE STYLE) */
 
 .navbar {
     display: flex;
@@ -75,7 +75,6 @@ body::before {
     font-weight: bold;
     font-family: var(--font-heading);
     color: var(--text-color-primary);
-    position: relative;
 }
 
 .nav-links a:hover {
@@ -86,7 +85,7 @@ body::before {
 
 .menu-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 40px auto;
 }
 
@@ -106,37 +105,43 @@ body::before {
     box-shadow: 0 0 40px rgba(197,160,89,0.15);
 }
 
-/* MENU SECTIONS (ANIMATION ADDED) */
+/* SPLIT LAYOUT */
 
-.menu-section {
-    margin-bottom: 50px;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeUp 1s ease forwards;
+.menu-split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    position: relative;
 }
 
-.menu-section:nth-child(1){animation-delay:0.2s;}
-.menu-section:nth-child(2){animation-delay:0.4s;}
-.menu-section:nth-child(3){animation-delay:0.6s;}
-.menu-section:nth-child(4){animation-delay:0.8s;}
+/* VERTICAL DIVIDER */
 
-@keyframes fadeUp{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.menu-split-layout::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #333, transparent);
+    transform: translateX(-50%);
 }
 
-/* SECTION TITLE */
+.menu-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SECTION TITLES */
 
 .section-title {
     font-family: var(--font-heading);
     font-weight: 400;
     font-style: italic;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--accent-color);
     margin-bottom: 10px;
+    text-align: center;
 }
 
 /* GOLD DIVIDER ANIMATION */
@@ -145,50 +150,44 @@ body::before {
     height: 2px;
     width: 0;
     background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    margin: 0 auto 30px auto;
+    margin: 0 auto 40px auto;
     animation: lineGrow 1.5s forwards;
 }
 
 @keyframes lineGrow{
     to{
-        width:120px;
+        width: 90px;
     }
 }
 
-.section-footer {
-    margin-top: 20px;
-    font-style: italic;
-    color: var(--text-color-secondary);
-    font-size: 0.9rem;
+/* SUBSECTIONS */
+
+.subsection-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--text-color-primary);
+    margin: 30px 0 15px 0;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
 }
 
-/* GRID */
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 60px;
-    text-align: left;
-}
-
-/* MENU ITEMS (HOVER EFFECT ADDED) */
+/* MENU ITEMS */
 
 .menu-item {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+    margin-bottom: 25px;
+    transition: 0.3s;
+    padding: 8px;
     border-radius: 6px;
-    transition: all 0.3s ease;
 }
 
 .menu-item:hover {
     background: rgba(197,160,89,0.08);
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
-/* ITEM HEADERS */
+/* ITEM HEADER */
 
-.item-header, .item-header-sub {
+.item-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -197,18 +196,17 @@ body::before {
 
 .item-name {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-color-primary);
 }
 
-/* PRICE HIGHLIGHT EFFECT */
+/* PRICE HIGHLIGHT */
 
 .item-price {
     font-weight: 700;
     color: var(--accent-color);
-    margin-left: 10px;
     transition: 0.3s;
 }
 
@@ -216,11 +214,29 @@ body::before {
     color: white;
 }
 
+/* DESCRIPTION */
+
 .item-desc {
     color: var(--text-color-secondary);
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.9rem;
     font-style: italic;
+    margin-bottom: 8px;
+}
+
+/* PHOTO */
+
+.item-photo-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid #333;
+    margin-top: 10px;
+    border-radius: 2px;
+    transition: 0.4s;
+}
+
+.menu-item:hover .item-photo-img {
+    transform: scale(1.03);
 }
 
 /* FOOTER */
@@ -228,6 +244,7 @@ body::before {
 .menu-footer {
     text-align: center;
     margin-top: 60px;
+    grid-column: 1 / -1;
 }
 
 .logo-placeholder {
@@ -238,47 +255,83 @@ body::before {
     display: inline-block;
     padding: 10px 20px;
 }
+
+/* RESPONSIVE */
+
+
+
 @media (max-width: 768px){
+
+/* NAVBAR */
 
 .navbar{
 flex-direction:column;
 align-items:center;
 gap:20px;
+text-align:center;
 }
 
 .nav-links{
 flex-direction:column;
-gap:15px;
+gap:12px;
 }
 
-.container{
-flex-direction:column;
-padding:40px 20px;
+/* MENU CARD */
+
+.menu-card{
+padding:35px 25px;
 }
 
-.info,
-.form-box{
-width:100%;
-}
+/* STACK THE TWO COLUMNS */
 
-.hero-content h2{
-font-size:34px;
-}
-
-.menu-grid{
+.menu-split-layout{
 grid-template-columns:1fr;
+gap:50px;
 }
 
-.about-container,
-.chef-container{
-flex-direction:column;
+/* REMOVE CENTER DIVIDER */
+
+.menu-split-layout::after{
+display:none;
+}
+
+/* CENTER COLUMN CONTENT */
+
+.menu-column{
+align-items:center;
 text-align:center;
 }
 
-.about img,
-.chef img{
+/* MENU ITEMS */
+
+.menu-item{
 width:100%;
-max-width:350px;
+max-width:420px;
+margin-bottom:25px;
+}
+
+/* ITEM HEADER */
+
+.item-header{
+font-size:15px;
+}
+
+/* DESSERT IMAGES */
+
+.item-photo-img{
+width:100%;
+max-width:300px;
+margin:auto;
+}
+
+/* TITLES */
+
+.section-title{
+font-size:1.9rem;
+}
+
+.subsection-title{
+text-align:center;
 }
 
 }
